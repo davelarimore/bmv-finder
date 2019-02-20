@@ -15,7 +15,7 @@ const mapsSelector = () => {
     if ((navigator.platform.indexOf('iPhone') != -1) ||
         (navigator.platform.indexOf('iPod') != -1) ||
         (navigator.platform.indexOf('iPad') != -1))
-        return 'maps://www.google.com/maps/dir/?api=1&travelmode=driving';
+        return 'https://www.google.com/maps/dir/?api=1&travelmode=driving';
     // Else use Google
     else
         return 'https://www.google.com/maps/dir/?api=1&travelmode=driving';
@@ -125,7 +125,6 @@ const getCurrentDateObject = () => {
 $(document).ready(function () {
     let json = $.getJSON('https://api.myjson.com/bins/qwo1e', (json) => {
         initialize(json);
-        // initialize(json.slice(0,1));
     });
     // About button
     $("#js-about").on("click", function () {
