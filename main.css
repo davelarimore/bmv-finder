@@ -56,7 +56,7 @@ header {
 }
 
 .aboutButton:hover {
-  background-color:  hsl(153, 100%, 40%);
+  background-color: hsl(153, 100%, 40%);
 }
 
 .aboutButton img {
@@ -80,10 +80,11 @@ header {
   padding: 30px;
   transform: translate(-50%, -50%);
   z-index: 25;
-  opacity:0;
-    -webkit-transition: opacity 200ms ease-in;
-    -moz-transition: opacity 200ms ease-in;
-    transition: opacity 200ms ease-in;
+  box-shadow: 0px 0px 10px #999;
+  opacity: 0;
+  -webkit-transition: opacity 200ms ease-in;
+  -moz-transition: opacity 200ms ease-in;
+  transition: opacity 200ms ease-in;
 }
 
 .popupContent h2 {
@@ -95,7 +96,7 @@ header {
 
 .popupOverlay.active, .popupContent.active {
   visibility: visible;
-  opacity:1;
+  opacity: 1;
 }
 
 .aboutCloseButton {
@@ -103,7 +104,7 @@ header {
   font-weight: 700;
   border: 0;
   background: none;
-  background-color:  hsl(217, 50%, 35%);
+  background-color: hsl(217, 50%, 35%);
   box-shadow: none;
   border-radius: 0px;
   padding: 10px 20px;
@@ -111,7 +112,7 @@ header {
 }
 
 .aboutCloseButton:hover {
-  background-color:  hsl(217, 50%, 50%);
+  background-color: hsl(217, 50%, 50%);
 }
 
 .mapCanvas {
@@ -241,6 +242,7 @@ header {
   }
   .aboutButton {
     left: 25px;
+    bottom: 25px;
   }
   .popupOverlay {
     width: 200px;
