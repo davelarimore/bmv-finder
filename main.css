@@ -1,0 +1,171 @@
+html, body, .map-canvas {
+  font-family: 'Lato', sans-serif;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2 {
+  padding: 0;
+  margin: 0;
+}
+
+h2 {
+  font-size: 1em;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+header {
+  position: relative;
+  color: white;
+  background-color: hsl(217, 50%, 35%);;
+  text-align: center;
+  height: 10vh;
+  border-bottom: 1px solid white;
+  box-shadow: 0px 0px 20px grey;
+  z-index: 10;
+}
+
+.headerContainer {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.map-canvas {
+  height: 90vh;
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (max-width: 480px) {
+  header {
+    height: 20vh;
+  }
+  .map-canvas {
+    height: 80vh;
+  }
+}
+
+.map-canvas .infoWindow {
+  padding: 10px;
+}
+
+.map-canvas .leftCol, .map-canvas .rightCol {
+  display: inline-block;
+  padding: 10px 0;
+}
+
+.map-canvas .leftCol {
+  float: left;
+}
+
+.map-canvas .rightCol {
+  float: left;
+  margin-left: 50px;
+}
+
+@media screen and (max-width: 640px) {
+  .map-canvas .leftCol, .map-canvas .rightCol {
+    display: block;
+    padding: 0;
+  }
+  .map-canvas .leftCol {
+    float: none;
+  }
+  .map-canvas .rightCol {
+    margin-left: 0;
+  }
+}
+
+.map-canvas p {
+  font-size: 1.1em;
+  padding: 0;
+  margin: 0;
+}
+
+.map-canvas .title {
+  font-size: 1.5em;
+  line-height: 1.5em;
+  margin: 5px 0 0 0;
+  border-bottom: 1px solid #999;
+}
+
+.map-canvas .locationName {
+  font-weight: bold;
+}
+
+.map-canvas .subHead {
+  font-weight: bold;
+  margin: 5px 0 0 0;
+}
+
+.dayLabel span {
+  display: inline-block;
+  min-width: 40px;
+}
+
+.open, .closed {
+  display: block;
+  text-align: center;
+  padding: 5px 0;
+  margin-top: 5px;
+  font-size: 0.8em;
+  line-height: 1em;
+  width: 99%
+}
+
+.open {
+  color: green;
+  border: 1px solid green;
+}
+
+.closed {
+  color: red;
+  border: 1px solid red;
+}
+
+.kiosk, .getDirections {
+  margin-top: 10px;
+  text-align: center;
+  line-height: 1.4em; 
+  padding: 5px;
+}
+
+.kiosk {
+  background-color: hsl(217, 50%, 85%);
+  clear: left;
+}
+
+.getDirections {
+  display: block;
+  font-size: 1.1em;
+  color: white;
+  text-decoration: none;  
+  background-color: hsl(217, 50%, 35%);
+  clear: left;
+}
+
+.getDirections:hover {
+  background-color: hsl(217, 50%, 50%);;
+}
+
+@media screen and (max-width: 480px) {
+  .map-canvas .title {
+    font-size: 1.2em;
+    line-height: 1.2em;
+  }
+  .map-canvas p {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 0.8em;
+  }
+  .getDirections {
+    font-size: 0.8em;
+  }
+  .dayLabel span {
+    min-width: 30px;
+  }
+}
