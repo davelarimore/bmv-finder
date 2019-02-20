@@ -23,6 +23,7 @@ header {
   background-color: hsl(217, 50%, 35%);
   text-align: center;
   height: 10vh;
+  min-height: 100px;
   border-bottom: 1px solid white;
   box-shadow: 0px 0px 20px grey;
   z-index: 10;
