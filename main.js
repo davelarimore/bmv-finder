@@ -10,7 +10,7 @@ const titleCase = (str) => {
 }
 
 // Map links utility
-const mapsSelector= () => {
+const mapsSelector = () => {
     // If we're on iOS, open in Apple Maps 
     if ((navigator.platform.indexOf('iPhone') != -1) ||
         (navigator.platform.indexOf('iPod') != -1) ||
@@ -24,7 +24,7 @@ const mapsSelector= () => {
 // Parse location opening hours string and convert it to 24hr
 // so we can compare them to the current time and date
 const convertMilitary = (time) => {
-    let timeArray = time.split(/[\s:\/]+/)
+    let timeArray = time.split(/[\s:\/]+/);
     if (timeArray.length <= 7) {
         let openHour = parseInt(timeArray[0]);
         let closeHour = parseInt(timeArray[4])
@@ -125,6 +125,16 @@ const getCurrentDateObject = () => {
 $(document).ready(function () {
     let json = $.getJSON('https://api.myjson.com/bins/qwo1e', (json) => {
         initialize(json);
+        // initialize(json.slice(0,1));
+    });
+    // About button
+    $("#js-about").on("click", function () {
+        console.log('clicked');
+        $(".popupOverlay, .popupContent").addClass("active");
+    });
+
+    $("#js-close, #js-popup-pverlay").on("click", function () {
+        $(".popupOverlay, .popupContent").removeClass("active");
     });
 });
 
@@ -135,6 +145,7 @@ const initialize = (json) => {
         center: new google.maps.LatLng(39.7684, -86.1581),
         disableDefaultUI: true,
         zoomControl: true,
+        gestureHandling: 'greedy',
         styles: [{ 'featureType': 'water', 'elementType': 'geometry', 'stylers': [{ 'color': '#e9e9e9' }, { 'lightness': 17 }] }, { 'featureType': 'landscape', 'elementType': 'geometry', 'stylers': [{ 'color': '#f5f5f5' }, { 'lightness': 20 }] }, { 'featureType': 'road.highway', 'elementType': 'geometry.fill', 'stylers': [{ 'color': '#ffffff' }, { 'lightness': 17 }] }, { 'featureType': 'road.highway', 'elementType': 'geometry.stroke', 'stylers': [{ 'color': '#ffffff' }, { 'lightness': 29 }, { 'weight': 0.2 }] }, { 'featureType': 'road.arterial', 'elementType': 'geometry', 'stylers': [{ 'color': '#ffffff' }, { 'lightness': 18 }] }, { 'featureType': 'road.local', 'elementType': 'geometry', 'stylers': [{ 'color': '#ffffff' }, { 'lightness': 16 }] }, { 'featureType': 'poi', 'elementType': 'geometry', 'stylers': [{ 'color': '#f5f5f5' }, { 'lightness': 21 }] }, { 'featureType': 'poi.park', 'elementType': 'geometry', 'stylers': [{ 'color': '#dedede' }, { 'lightness': 21 }] }, { 'elementType': 'labels.text.stroke', 'stylers': [{ 'visibility': 'on' }, { 'color': '#ffffff' }, { 'lightness': 16 }] }, { 'elementType': 'labels.text.fill', 'stylers': [{ 'saturation': 36 }, { 'color': '#333333' }, { 'lightness': 40 }] }, { 'elementType': 'labels.icon', 'stylers': [{ 'visibility': 'off' }] }, { 'featureType': 'transit', 'elementType': 'geometry', 'stylers': [{ 'color': '#f2f2f2' }, { 'lightness': 19 }] }, { 'featureType': 'administrative', 'elementType': 'geometry.fill', 'stylers': [{ 'color': '#fefefe' }, { 'lightness': 20 }] }, { 'featureType': 'administrative', 'elementType': 'geometry.stroke', 'stylers': [{ 'color': '#fefefe' }, { 'lightness': 17 }, { 'weight': 1.2 }] }]
     };
 
@@ -213,7 +224,7 @@ const initialize = (json) => {
 
             // Generate the get directions link
             let openMapURL = mapsSelector();
-            const trimmedPostalCode = loc.postal_code.toString().slice(0,5);
+            const trimmedPostalCode = loc.postal_code.toString().slice(0, 5);
             openMapURL = openMapURL + `&destination=${loc.address_line_1 + ' ' + loc.city + ' IN ' + trimmedPostalCode}`
             const getDirectionsButton = `<a class='getDirections' href='${openMapURL}' title='Get Directions' target='_blank'>Get Directions</a>`
 
@@ -225,7 +236,7 @@ const initialize = (json) => {
                 const todaysLocationHoursObject = convertMilitary(todaysLocationHours)
                 if (loc[currentDateObject.currentDay] === 'Closed') {
                     return false; // closed all day
-                } else if (Object.keys(todaysLocationHoursObject) === 2 && currentTime >= parseInt(todaysLocationHoursObject.openTime) &&
+                } else if (Object.keys(todaysLocationHoursObject).length === 2 && currentTime >= parseInt(todaysLocationHoursObject.openTime) &&
                     currentTime <= parseInt(todaysLocationHoursObject.closeTime)) {
                     return true; // standard location hours
                 } else if ((Object.keys(todaysLocationHoursObject).length === 4 && currentTime >= parseInt(todaysLocationHoursObject.morningOpenTime) &&
@@ -295,3 +306,5 @@ const initialize = (json) => {
 ////////////////////////////
 // End Map and Info Windows
 ////////////////////////////
+
+

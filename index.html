@@ -25,7 +25,20 @@
         </div>
     </header>
     <main role="main">
-        <div class="map-canvas" id="js-map-canvas"></div>
+        <div class="mapCanvas" id="js-map-canvas"></div>
+        <a class="aboutButton" id="js-about" href="#">
+            <img src="about.svg" />
+        </a>
+
+        <div class="popupOverlay" id="js-popup-pverlay">
+            <div class="popupContent">
+                <h2>About</h2>
+                <p>Find your nearest BMV or RSI Training location on the map, then click on it to see details.</p>
+                <p>Data courtesy of in.gov.</p>
+                <button class="aboutCloseButton" id="js-close">OK</button>
+            </div>
+        </div>
+
     </main>
 </body>
 
